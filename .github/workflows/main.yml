@@ -68,17 +68,10 @@ jobs:
 #    needs: deploy
     needs: build_and_push_to_docker_hub
     steps:
-#    - name: send message
-#      uses: appleboy/telegram-action@main
-#      with:
-#        to: ${{ secrets.TELEGRAM_TO }}
-#        token: ${{ secrets.TELEGRAM_TOKEN }}
-#        message: ${{ github.workflow }} успешно выполнен!
-
     - uses: actions/checkout@master
-    - name: send message #send custom message with args
+    - name: send message
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        args: ${{ github.workflow }} успешно выполнен! #The ${{ github.event_name }} event triggered first step.
+        args: ${{ github.workflow }} успешно выполнен!
